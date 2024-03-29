@@ -60,10 +60,11 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          pathname: ${{ secrets.SERVER_NAME }}
           script: |
-            cd /www/wwwroot/${{ secrets.SERVER_NAME }}
-            if ! pm2 list | grep -q ${{ secrets.SERVER_NAME }}; then
-              pm2 restart ${{ secrets.SERVER_NAME }}
+            cd /www/wwwroot/$pathname
+            if ! pm2 list | grep -q $pathname; then
+              pm2 restart $pathname
             else
               pm2 start ecosystem.config.js --env production
             fi
