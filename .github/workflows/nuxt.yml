@@ -63,8 +63,8 @@ jobs:
           pathname: ${{ secrets.SERVER_NAME }}
           script: |
             cd /www/wwwroot/$pathname
-            if ! pm2 list | grep -q $pathname; then
-              pm2 restart $pathname
+            if ! pm2 list | grep -q "$pathname"; then
+              pm2 restart "$pathname"
             else
               pm2 start ecosystem.config.js --env production
             fi
