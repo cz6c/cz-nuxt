@@ -51,7 +51,7 @@ jobs:
           # 用户
           REMOTE_USER: ${{ secrets.SERVER_USER }}
           # 目标地址
-          TARGET: '/www/wwwroot/${{ secrets.SERVER_NAME }}'
+          TARGET: '/www/wwwroot/blog_app'
 
       # 安装依赖、重启服务
       - name: Server Reload
@@ -60,11 +60,10 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          pathname: ${{ secrets.SERVER_NAME }}
           script: |
-            cd /www/wwwroot/$pathname
-            if ! pm2 list | grep -q "$pathname"; then
-              pm2 restart "$pathname"
+            cd /www/wwwroot/blog_app
+            if ! pm2 list | grep -q "blog_app"; then
+              pm2 restart blog_app
             else
               pm2 start ecosystem.config.js --env production
             fi
