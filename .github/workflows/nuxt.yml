@@ -51,7 +51,7 @@ jobs:
           # 用户
           REMOTE_USER: ${{ secrets.SERVER_USER }}
           # 目标地址
-          TARGET: '/www/wwwroot/nuxt/blog_app'
+          TARGET: '/www/wwwroot/${{ secrets.SERVER_NAME }}'
 
       # 安装依赖、重启服务
       - name: Server Reload
@@ -61,6 +61,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /www/wwwroot/nuxt/blog_app
-      # pm2 delete blog_app
-            pm2 start ecosystem.config.js --env production
+            cd /www/wwwroot/${{ secrets.SERVER_NAME }}
+            if ! pm2 list | grep -q ${{ secrets.SERVER_NAME }}; then
+              pm2 restart ${{ secrets.SERVER_NAME }}
+            else
+              pm2 start ecosystem.config.js --env production
+            fi
