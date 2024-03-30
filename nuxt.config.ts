@@ -1,8 +1,5 @@
 export default defineNuxtConfig({
   runtimeConfig: {
-    server: {
-      port: process.env.NUXT_PORT, // 指定端口
-    },
     public: {
       title: process.env.NUXT_TITLE,
       host: process.env.NUXT_HOST

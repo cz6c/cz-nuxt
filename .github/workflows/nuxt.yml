@@ -45,13 +45,13 @@ jobs:
           # SCP参数
           ARGS: '-avzr --delete'
           # 源目录
-          SOURCE: '.output/ pm2/'
+          SOURCE: '.output/'
           # 服务器ip
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           # 用户
           REMOTE_USER: ${{ secrets.SERVER_USER }}
           # 目标地址
-          TARGET: '/www/wwwroot/blog_app'
+          TARGET: '/www/wwwroot/blog_nuxt/build'
 
       # 安装依赖、重启服务
       - name: Server Reload
@@ -61,9 +61,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /www/wwwroot/blog_app
-            if pm2 list | grep -q "blog_app"; then
-              pm2 delete blog_app
+            cd /www/wwwroot/blog_nuxt
+            if pm2 list | grep -q "blog_nuxt"; then
+              pm2 delete blog_nuxt
             fi
-            pm2 start ecosystem.config.js --env production
+            pm2 start ecosystem.config.js
             pm2 save
