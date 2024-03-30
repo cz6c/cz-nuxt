@@ -62,8 +62,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /www/wwwroot/blog_app
-            if ! pm2 list | grep -q "blog_app"; then
+            if pm2 list | grep -q "blog_app"; then
               pm2 restart blog_app
             else
               pm2 start ecosystem.config.js --env production
             fi
+            pm2 save
