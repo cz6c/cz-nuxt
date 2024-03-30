@@ -8,11 +8,7 @@
           target="_blank"
           class="flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-white/10 p-2 rounded-lg -m-2 text-sm min-w-0"
         >
-          <UAvatar
-            :src="getThumbnail(bookmark.url)"
-            :alt="bookmark.label"
-            :ui="{ rounded: 'rounded-md' }"
-          />
+          <UAvatar :src="getThumbnail(bookmark.url)" :alt="bookmark.label" :ui="{ rounded: 'rounded-md' }" />
           <p class="truncate text-gray-700 dark:text-gray-200">
             {{ bookmark.label }}
           </p>
@@ -27,9 +23,12 @@
 </template>
 
 <script setup>
+const {
+  public: { title },
+} = useRuntimeConfig();
 const description = "我在网上发现了很棒的东西";
 useSeoMeta({
-  title: "书签",
+  title: `书签 - ${title}`,
   description,
 });
 

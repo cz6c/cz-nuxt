@@ -10,9 +10,12 @@
 </template>
 
 <script setup>
+const {
+  public: { title },
+} = useRuntimeConfig();
 const description = "关于编程、用户界面、产品设计等方面的想法。";
 useSeoMeta({
-  title: "文章",
+  title: `文章 - ${title}`,
   description,
 });
 

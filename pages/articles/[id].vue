@@ -13,12 +13,21 @@
   </main>
 </template>
 <script setup>
+const {
+  public: { title, host },
+} = useRuntimeConfig();
 const route = useRoute();
-const { slug } = route.params;
+const { id } = route.params;
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} - ${title}` : title;
+  },
+});
 useSeoMeta({
-  ogImage: `https://fayazahmed.com/articles/${slug}.png`,
-  twitterCard: "summary_large_image",
-  articleAuthor: "Fayaz Ahmed",
+  ogUrl: `${host}/articles/${id}`,
+  ogImage: `${host}/articles/${id}.png`, // 分享内容时显示的图像的 URL。
+  twitterCard: "summary_large_image", // 推特分享卡片风格
+  articleAuthor: "cz6",
 });
 </script>
 <style>
