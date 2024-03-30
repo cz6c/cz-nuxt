@@ -64,7 +64,6 @@ jobs:
             cd /www/wwwroot/blog_app
             if pm2 list | grep -q "blog_app"; then
               pm2 delete blog_app
-            else
             fi
             pm2 start ecosystem.config.js --env production
             pm2 save
