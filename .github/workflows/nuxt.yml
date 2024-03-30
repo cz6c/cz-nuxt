@@ -28,7 +28,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: "18.19.1"
+          node-version: "18.18.0"
           cache: "pnpm"
 
       - name: Install And build
@@ -45,7 +45,7 @@ jobs:
           # SCP参数
           ARGS: '-avzr --delete'
           # 源目录
-          SOURCE: '.output/ config/'
+          SOURCE: '.output/ pm2/'
           # 服务器ip
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           # 用户
@@ -63,8 +63,8 @@ jobs:
           script: |
             cd /www/wwwroot/blog_app
             if pm2 list | grep -q "blog_app"; then
-              pm2 restart blog_app
+              pm2 delete blog_app
             else
-              pm2 start ecosystem.config.js --env production
-              pm2 save
             fi
+            pm2 start ecosystem.config.js --env production
+            pm2 save
