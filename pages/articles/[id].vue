@@ -14,7 +14,7 @@
 </template>
 <script setup>
 const {
-  public: { title, host },
+  public: { title, siteUrl },
 } = useRuntimeConfig();
 const route = useRoute();
 const { id } = route.params;
@@ -24,8 +24,8 @@ useHead({
   },
 });
 useSeoMeta({
-  ogUrl: `${host}/articles/${id}`,
-  ogImage: `${host}/articles/${id}.png`, // 分享内容时显示的图像的 URL。
+  ogUrl: `${siteUrl}/articles/${id}`,
+  ogImage: `${siteUrl}/articles/${id}.png`, // 分享内容时显示的图像的 URL。
   twitterCard: "summary_large_image", // 推特分享卡片风格
   articleAuthor: "cz6",
 });

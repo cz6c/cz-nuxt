@@ -1,9 +1,10 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      title: process.env.NUXT_TITLE,
-      host: process.env.NUXT_HOST
-    }
+      title: process.env.NUXT_PUBLIC_TITLE,
+      baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
+    },
   },
   devtools: { enabled: true },
   modules: [
