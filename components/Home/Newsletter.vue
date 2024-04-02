@@ -17,11 +17,10 @@
 </template>
 
 <script setup>
+import { listMedia } from "@/api/index";
 // 请求接口
 async function contactForm() {
-  await useFetch("http://43.139.39.151:9600/auth/login", {
-    method: "POST",
-    body: { hello: "world " },
-  });
+  const { data, code, msg } = await listMedia({ hello: "world " });
+  console.log("🚀 ~ contactForm ~ data, code, msg:", data, code, msg);
 }
 </script>
