@@ -1,27 +1,29 @@
+<script setup lang="ts">
+import { appName } from '~/constants'
+
+useHead({
+  title: appName,
+})
+</script>
+
 <template>
-  <NuxtLoadingIndicator color="#14b8a6" />
-  <AppNavbar />
-  <div class="h-32"></div>
-  <UContainer>
+  <VitePwaManifest />
+  <NuxtLayout>
     <NuxtPage />
-  </UContainer>
-  <div class="h-32"></div>
-  <AppFooter />
+  </NuxtLayout>
 </template>
 
 <style>
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.2s;
+html,
+body,
+#__nuxt {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-.page-leave-to {
-  opacity: 0;
-  transform: translateY(-5px);
-}
-
-.page-enter-from {
-  opacity: 0;
-  transform: translateY(5px);
+html.dark {
+  background: #222;
+  color: white;
 }
 </style>

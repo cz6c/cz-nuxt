@@ -1,15 +1,4 @@
-<template>
-  <main class="min-h-screen">
-    <AppHeader class="mb-16" title="文章" :description="description" />
-    <ul class="space-y-16">
-      <li v-for="(article, id) in articles" :key="id">
-        <ArticleCard :article="article" />
-      </li>
-    </ul>
-  </main>
-</template>
-
-<script setup>
+<script setup lang='ts'>
 const {
   public: { title },
 } = useRuntimeConfig();
@@ -23,3 +12,14 @@ const { data: articles } = await useAsyncData("all-articles", () =>
   queryContent("/articles").sort({ published: -1 }).find()
 );
 </script>
+
+<template>
+  <div class="index" >
+    <!-- <AppHeader class="mb-16" title="文章" :description="description" /> -->
+    <ul class="space-y-16">
+      <li v-for="(article, id) in articles" :key="id">
+        <ArticleCard :article="article" />
+      </li>
+    </ul>
+  </div>
+</template>

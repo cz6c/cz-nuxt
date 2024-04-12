@@ -1,6 +1,16 @@
+<script setup lang='ts'>
+const {
+  public: { title },
+} = useRuntimeConfig();
+const description = "做了一些有趣的实验。";
+useSeoMeta({
+  title: `Lab - ${title}`,
+  description,
+});
+</script>
+
 <template>
-  <main class="min-h-screen">
-    <AppHeader class="mb-12" title="Lab" :description="description" />
+  <div class="index" >
     <div class="space-y-24">
       <!-- 获取content/lab下的文件列表 -->
       <ContentList path="/lab" v-slot="{ list }">
@@ -11,16 +21,5 @@
         </ContentQuery>
       </ContentList>
     </div>
-  </main>
+  </div>
 </template>
-
-<script setup>
-const {
-  public: { title },
-} = useRuntimeConfig();
-const description = "做了一些有趣的实验。";
-useSeoMeta({
-  title: `Lab - ${title}`,
-  description,
-});
-</script>

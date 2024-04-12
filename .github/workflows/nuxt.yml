@@ -28,8 +28,8 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: "16"
-          cache: "pnpm"
+          node-version: '16'
+          cache: pnpm
 
       - name: Install And build
         run: |
@@ -43,15 +43,15 @@ jobs:
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           # SCP参数
-          ARGS: '-avzr --delete'
+          ARGS: -avzr --delete
           # 源目录
-          SOURCE: '.output/'
+          SOURCE: .output/
           # 服务器ip
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           # 用户
           REMOTE_USER: ${{ secrets.SERVER_USER }}
           # 目标地址
-          TARGET: '/www/wwwroot/blog_nuxt/build'
+          TARGET: /www/wwwroot/blog_nuxt/build
 
       # 安装依赖、重启服务
       - name: Server Reload
