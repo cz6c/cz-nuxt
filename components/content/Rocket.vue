@@ -1,30 +1,30 @@
+<script setup>
+const fast = ref(false)
+const streakSpeed = computed(() => (fast.value ? '0.5s' : '2s'))
+</script>
+
 <template>
   <div
     class="py-12 relative overflow-hidden flex items-center justify-center w-full bg-gray-100 dark:bg-gray-900 dark:text-white"
+    :style="{ '--streak-speed': streakSpeed }"
     @mouseover="fast = true"
     @mouseleave="fast = false"
-    :style="{ '--streak-speed': streakSpeed }"
   >
     <span class="rocket" :class="{ shake: fast, move: !fast }">
-      <div name="ph:rocket-duotone" class="h-12 w-12 -rotate-90" />
+      <div class="i-carbon-rocket h-12 w-12 rotate-45" />
     </span>
     <span
       v-for="n in 5"
       :key="n"
       :style="{
-        top: Math.random() * 100 + '%',
-        animationDelay: Math.random() * 1 + 's',
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 1}s`,
         animationDuration: streakSpeed,
       }"
       class="streak absolute left-0 w-1/5 h-0.5 bg-gradient-to-r from-transparent to-black/60 dark:to-white/40"
-    ></span>
+    />
   </div>
 </template>
-
-<script setup>
-const fast = ref(false);
-const streakSpeed = computed(() => (fast.value ? "0.5s" : "2s"));
-</script>
 
 <style scoped>
 .rocket.move {

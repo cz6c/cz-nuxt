@@ -1,39 +1,38 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 const color = useColorMode()
 const meSrc = computed(() => color.value === 'dark' ? '/me-dark.webp' : '/me-light.webp')
 </script>
 
 <template>
-  <div>
-    <div class="header h-42">
+  <div class="text-sm">
+    <div class="fixed top-0 w-full h-12 z-50 header">
       <LayoutsNavbar />
-      <div class="pt-12">
+    </div>
+    <main class="mx-auto max-w-6xl xl:px-8 lg:px-8 md:px-4 sm:px-4 px4">
+      <div class="pt-12 text-center">
         <img :src="meSrc" alt="me" class="w-18 h-30">
       </div>
-    </div>
-    <main class="mx-auto max-w-6xl py-16 xl:px-8 lg:px-8 md:px-4 sm:px-4 px4">
-      <slot />
-      <Footer />
-      <div class="mx-auto mt-5 text-center text-sm opacity-25">
+      <main class="py-16">
+        <slot />
+      </main>
+      <div class="text-center opacity-25">
         [Home Layout]
       </div>
+      <LayoutsFooter />
     </main>
   </div>
 </template>
 
 <style>
 .header {
-  background: linear-gradient(
-    0deg,
-    hsl(202deg, 71%, 90%),
-    hsl(204deg, 67%, 85%)
-  );
+  background-image: radial-gradient(transparent 1px, #fff 1px);
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(4px);
+  border-bottom: 1px solid #dcdfe6;
 }
+
 .dark .header {
-  background: linear-gradient(
-    0deg,
-    hsla(200deg, 100%, 85%, 0.1),
-    hsla(200deg, 100%, 85%, 0)
-  );
+  background-image: radial-gradient(transparent 1px, #141414 1px);
+  border-color: #4c4d4f;
 }
 </style>

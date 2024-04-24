@@ -1,12 +1,20 @@
+<script setup lang="ts">
+interface ArticleType {
+  _path: string
+  published: string
+  title: string
+  description: string
+}
+
+defineProps<{ article: ArticleType }>()
+</script>
+
 <template>
   <NuxtLink :to="article._path" class="group">
     <article>
-      <time
-        class="relative z-10 order-first mb-3 flex items-center text-sm text-gray-400 dark:text-gray-500 pl-3.5"
-        datetime="2022-09-05"
-      >
+      <time class="relative z-10 order-first mb-3 flex items-center text-sm text-gray-400 dark:text-gray-500 pl-3.5">
         <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
-          <span class="h-4 w-0.5 rounded-full bg-gray-200 dark:bg-gray-500"> </span>
+          <span class="h-4 w-0.5 rounded-full bg-gray-200 dark:bg-gray-500" />
         </span>
         {{ article.published }}
       </time>
@@ -21,12 +29,3 @@
     </article>
   </NuxtLink>
 </template>
-
-<script setup>
-defineProps({
-  article: {
-    type: Object,
-    required: true,
-  },
-});
-</script>

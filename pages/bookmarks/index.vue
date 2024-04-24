@@ -63,6 +63,7 @@ function getThumbnail(url: string) {
 
 <template>
   <div>
+    <Header class="mb-16" title="书签" :description="description" />
     <ul class="space-y-2">
       <li v-for="bookmark in bookmarks" :key="bookmark.id">
         <a
@@ -70,8 +71,8 @@ function getThumbnail(url: string) {
           target="_blank"
           class="flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-white/10 p-2 rounded-lg -m-2 text-sm min-w-0"
         >
-          <img :src="getThumbnail(bookmark.url)" :alt="bookmark.label" class="w-10 h-10 border-rounded-50%" >
-          <p class="truncate" >
+          <img :src="getThumbnail(bookmark.url)" :alt="bookmark.label" class="w-10 h-10 border-rounded-50%">
+          <p class="truncate">
             {{ bookmark.label }}
           </p>
           <span class="flex-1" />
