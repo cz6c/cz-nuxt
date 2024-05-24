@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const items = [
   { name: 'Home', path: '/' },
-  {
-    name: 'Projects',
-    path: '/projects',
-  },
+  // {
+  //   name: 'Projects',
+  //   path: '/projects',
+  // },
   {
     name: 'Articles',
     path: '/articles',
@@ -20,7 +20,7 @@ const items = [
 <template>
   <nav class="mx-auto max-w-6xl xl:px-8 lg:px-8 md:px-4 sm:px-4 px4 flex items-center">
     <a href="/">
-      logo预留
+      <img src="/favicon.ico" alt="me" class="w-6 h-6">
     </a>
     <ul class="flex-1 flex items-center ml-6 text-4">
       <li v-for="item in items" :key="item.path" class="p-3 flex items-center justify-center transition">

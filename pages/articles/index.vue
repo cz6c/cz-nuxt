@@ -1,4 +1,6 @@
 <script setup lang='ts'>
+import type { ArticleType } from '#types/index'
+
 const {
   public: { title },
 } = useRuntimeConfig()
@@ -17,7 +19,7 @@ const { data: articles } = await useAsyncData('all-articles', () =>
     <Header class="mb-16" title="文章" :description="description" />
     <ul class="space-y-16">
       <li v-for="(article, id) in articles" :key="id">
-        <ArticleCard :article="article" />
+        <ArticleCard :article="article as unknown as ArticleType" />
       </li>
     </ul>
   </div>

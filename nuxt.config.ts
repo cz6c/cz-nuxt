@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
-    '@nuxt/content'
+    '@nuxt/content',
   ],
 
   experimental: {
@@ -53,8 +53,8 @@ export default defineNuxtConfig({
     head: {
       viewport: 'width=device-width,initial-scale=1',
       link: [
-        { rel: 'icon', href: '/favicon.png', sizes: 'any' },
-        { rel: 'apple-touch-icon', href: '/favicon.png' },
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'apple-touch-icon', href: '/favicon.ico' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -83,9 +83,17 @@ export default defineNuxtConfig({
     },
   },
 
+  extends: '@nuxt-themes/typography',// 富文本主题
   content: {
     highlight: {
-      theme: "github-dark",
+      theme: {
+        // Default theme (same as single string)
+        default: 'github-light',
+        // Theme used if `html.dark`
+        dark: 'github-dark',
+        // Theme used if `html.sepia`
+        sepia: 'monokai',
+      },
     },
   },
 })

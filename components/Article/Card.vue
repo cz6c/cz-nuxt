@@ -1,10 +1,5 @@
 <script setup lang="ts">
-interface ArticleType {
-  _path: string
-  published: string
-  title: string
-  description: string
-}
+import type { ArticleType } from '#types/index'
 
 defineProps<{ article: ArticleType }>()
 </script>

@@ -8,10 +8,10 @@ const meSrc = computed(() => color.value === 'dark' ? '/me-dark.webp' : '/me-lig
     <div class="fixed top-0 w-full h-12 z-50 header">
       <LayoutsNavbar />
     </div>
+    <div class="fixed top-20% left--8 transform transform-rotate-20">
+      <img :src="meSrc" alt="me" class="w-27 h-45">
+    </div>
     <main class="mx-auto max-w-6xl xl:px-8 lg:px-8 md:px-4 sm:px-4 px4">
-      <div class="pt-12 text-center">
-        <img :src="meSrc" alt="me" class="w-18 h-30">
-      </div>
       <main class="py-16">
         <slot />
       </main>
