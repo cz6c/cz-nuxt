@@ -1,3 +1,4 @@
+import * as process from 'node:process'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
@@ -64,6 +65,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
     },
+    buildAssetsDir: 'static', // 修改站点资产的文件夹名称，默认是_nuxt
   },
 
   pwa,
@@ -83,7 +85,7 @@ export default defineNuxtConfig({
     },
   },
 
-  extends: '@nuxt-themes/typography',// 富文本主题
+  extends: '@nuxt-themes/typography', // 富文本主题
   content: {
     highlight: {
       theme: {

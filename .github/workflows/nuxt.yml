@@ -51,7 +51,7 @@ jobs:
           # 用户
           REMOTE_USER: ${{ secrets.SERVER_USER }}
           # 目标地址
-          TARGET: /www/wwwroot/blog_nuxt/build
+          TARGET: /www/wwwroot/blog_nuxt/.output
 
       # 安装依赖、重启服务
       - name: Server Reload
