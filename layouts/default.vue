@@ -1,6 +1,14 @@
 <script setup lang="ts">
 const color = useColorMode()
 const meSrc = computed(() => color.value === 'dark' ? '/me-dark.webp' : '/me-light.webp')
+
+function toTop() {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  })
+}
 </script>
 
 <template>
@@ -9,7 +17,7 @@ const meSrc = computed(() => color.value === 'dark' ? '/me-dark.webp' : '/me-lig
       <LayoutsNavbar />
     </div>
     <div class="fixed bottom-20% right--8 transform transform-rotate--20">
-      <img :src="meSrc" alt="me" class="w-27 h-45">
+      <img :src="meSrc" alt="me" class="w-27 h-45" @click="toTop">
     </div>
     <main class="mx-auto max-w-6xl xl:px-8 lg:px-8 md:px-4 sm:px-4 px4">
       <main class="py-16">
